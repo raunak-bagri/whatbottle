@@ -10,15 +10,18 @@ import java.util.List;
 
 /**
  *
- * @author gunaas
+ * @author raunak.bagri
  *
  */
 @Repository
 public interface ReplyMessageRequestRepository extends MongoRepository<ReplyMessageRequest, String> {
+
+    @Override
     ReplyMessageRequest save(ReplyMessageRequest replyMessageRequest);
 
     List<ReplyMessageRequest> findAllOrOrderByCreatedDate();
 
-    void  delete(ReplyMessageRequest replyMessageRequest);
+    @Override
+    void delete(ReplyMessageRequest replyMessageRequest);
 
 }

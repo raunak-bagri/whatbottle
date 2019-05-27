@@ -3,7 +3,6 @@ package com.whatbottle.service.Impl;
 
 import com.google.gson.Gson;
 import com.lithium.mineraloil.api.lia.api.v1.models.BoardV1Response;
-import com.lithium.mineraloil.api.lia.api.v2.models.MessageV2Response;
 import com.whatbottle.data.Requests.MessageRequest;
 import com.whatbottle.data.Requests.WhatsAppMessage;
 import com.whatbottle.data.models.Answers;
@@ -16,7 +15,6 @@ import com.whatbottle.repository.TopicMuteStatusRepository;
 import com.whatbottle.repository.TopicMuteStatusRepositoryCustom;
 import com.whatbottle.service.Whatbottleservice;
 import com.whatbottle.util.Constants;
-import com.whatbottle.util.PostMesageToLIA;
 import com.whatbottle.util.WhatbottleHelper;
 import com.whatbottle.util.WhatbottleUtils;
 import io.smooch.client.auth.ApiKeyAuth;
@@ -44,9 +42,6 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
 
     @Autowired
     TopicMuteStatusRepository topicMuteStatusRepository;
-
-    @Autowired
-    PostMesageToLIA postAMessageToLia;
 
     @Autowired
     TopicMuteStatusRepositoryCustom topicMuteStatusRepositoryCustom;
@@ -197,7 +192,7 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
 
     private void processUnsatisfied(String response, String userId) throws Exception {
         if (response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("Y")) {
-            postAMessageToLia.postToCommunityWithNewTopic(response);
+            //action
             postWhatBottleMessage(new MessageRequest(Constants.postSuccessfulMessage), userId);
             reiterteMenu(userId);
         } else if (response.equalsIgnoreCase("no") || response.equalsIgnoreCase("n"))
@@ -402,9 +397,9 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
 
     @Override
     public MessageResponse replyToTopic(WhatsAppMessage whatsAppMessage) throws Exception {
-        BoardV1Response m = postAMessageToLia.replyToTopic(whatsAppMessage);
+        //action
         Message message = new Message();
-        message.setText(new Gson().toJson(m));
+        message.setText(new Gson().toJson(message));
         MessageResponse messageResponse = new MessageResponse();
         messageResponse.setMessage(message);
         return messageResponse;

@@ -95,12 +95,6 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-mongodb</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>com.lithium.mineraloil</groupId>
-            <artifactId>lia-api</artifactId>
-            <version>${lia-api}</version>
-        </dependency>
         <dependency>
             <groupId>commons-httpclient</groupId>
             <artifactId>commons-httpclient</artifactId>
@@ -126,7 +120,6 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <lia-api>1.176</lia-api>
     </properties>
 
     <build>

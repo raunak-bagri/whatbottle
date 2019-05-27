@@ -4,9 +4,9 @@ import com.whatbottle.data.models.TopicMuteStatus;
 
 public interface TopicMuteStatusRepositoryCustom {
 
-    public TopicMuteStatus updateMuteStatus(String topicId, boolean muteStatus);
+    TopicMuteStatus updateMuteStatus(String topicId, boolean muteStatus);
 
-    public TopicMuteStatus findActiveTopic();
+    TopicMuteStatus findActiveTopic();
 
 
 }
